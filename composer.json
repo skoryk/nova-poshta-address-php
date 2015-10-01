@@ -1,0 +1,30 @@
+{
+    "name": "serj1chen/nova-poshta-address-php",
+    "description": "Расширения для адрес Новой Почты",
+    "keywords": [
+        "novaposhta",
+        "php",
+        "address",
+        "api"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chenakal Sergii",
+            "homepage": "https://github.com/serj1chen",
+            "email": "s.chenakal@gmail.com"
+        }
+    ],
+    "require": {
+        "serj1chen/nova-poshta-sdk-php": "2.0.*",
+        "php": ">=5.3.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "NovaPoshtaAddress": "component/"
+        }
+    }
+}
