@@ -28,4 +28,9 @@ class AreaObject extends Area
     {
         return isset($this->Cities[$ref]) ? $this->Cities[$ref] : null;
     }
+
+    public function getCities()
+    {
+        return $this->Cities;
+    }
 }

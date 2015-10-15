@@ -26,4 +26,5 @@ interface DataClientInterface
      * @return Warehouse
      */
     public function getWarehouseByNumber($refCity, $number);
-} 
+    public function getCities();
+}

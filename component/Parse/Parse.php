@@ -22,16 +22,16 @@ abstract class Parse
 
     protected function processString($str)
     {
-        $str = ' ' . mb_strtolower($str) . ' ';
+        $str = ' ' . mb_strtolower($str, 'UTF-8') . ' ';
         $this->removeItems($str, $this::getSymbolsForRemove());
         $this->removeItems($str, $this::getMarksForRemote(), ' ');
         return $this->splitString($str);
     }
 
-    protected function removeItems(&$str, $items, $betweenSymbol = '')
+    protected function removeItems(&$str, $items, $betweenSymbol = "")
     {
         foreach($items as $item){
-            $str = str_replace($betweenSymbol . $item . $betweenSymbol, ' ', $str);
+            $str = str_replace($betweenSymbol . $item . $betweenSymbol, " ", $str);
         }
     }
 
@@ -49,6 +49,8 @@ abstract class Parse
             ',',
             '(',
             ')',
+            "\t",
+            "\n",
         ];
     }
 

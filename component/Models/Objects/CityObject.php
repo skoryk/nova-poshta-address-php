@@ -26,4 +26,9 @@ class CityObject extends City
     {
         return isset($this->Warehouses[$ref]) ? $this->Warehouses[$ref] : null;
     }
+
+    public function getWarehouses()
+    {
+        return $this->Warehouses;
+    }
 }

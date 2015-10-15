@@ -19,9 +19,12 @@ class Indexes
         $this->repeatIndex = $repeatIndex;
     }
 
-    public function set($index, $value)
+    public function set($index, $value, $t = true)
     {
-        $this->prepareIndex($index);
+        if ($t) {
+            $t= 5;
+        }
+        $index = $this->prepareIndex($index);
         if ($this->repeatIndex && !isset($this->data[$index])) {
             $this->data[$index] = [$value];
         } elseif ($this->repeatIndex) {
@@ -33,7 +36,7 @@ class Indexes
 
     public function get($index)
     {
-        $this->prepareIndex($index);
+        $index = $this->prepareIndex($index);
         if (isset($this->data[$index])) {
             return $this->data[$index];
         } elseif ($this->repeatIndex) {
@@ -42,8 +45,8 @@ class Indexes
         return null;
     }
 
-    private function prepareIndex(&$index)
+    private function prepareIndex($index)
     {
-        $index = md5($index);
+        return md5($index);
     }
 }

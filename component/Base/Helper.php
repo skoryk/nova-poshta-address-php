@@ -31,4 +31,13 @@ class Helper
         $str = trim($str);
         return $str;
     }
+
+    public static function sortArrayOfObjects(array &$array, $fieldSort)
+    {
+        $asArray = array();
+        foreach ($array as $key => &$row){
+            $asArray[$key] = $row->$fieldSort;
+        }
+        array_multisort($asArray, SORT_LOCALE_STRING, $array);
+    }
 }

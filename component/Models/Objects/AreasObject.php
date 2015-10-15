@@ -26,4 +26,9 @@ class AreasObject
     {
         return isset($this->Areas[$ref]) ? $this->Areas[$ref] : null;
     }
+
+    public function getAreas()
+    {
+        return $this->Areas;
+    }
 }

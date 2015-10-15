@@ -31,8 +31,8 @@ class CityAddress extends Parse
                 }
             }
         }
-
-        return array_values($cities);
+        $cities = array_values($cities);
+        return $cities;
     }
 
     protected function getMarksForRemote()

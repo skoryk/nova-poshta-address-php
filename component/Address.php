@@ -35,11 +35,22 @@ class Address implements DataClientInterface
 
     public function getFindCities($name)
     {
-        return $this->cityAddress->getStringByCity($name);
+        $response = $this->cityAddress->getStringByCity($name);
+        return $response;
     }
 
     public function getWarehouseByNumber($refCity, $number)
     {
         return $this->warehouseAddress->getStringByNumberWarehouse($refCity, $number);
+    }
+
+    public function getCities()
+    {
+        return $this->data->getCities();
+    }
+
+    public function getWarehouses($cityRef)
+    {
+        return $this->data->getWarehouses($cityRef);
     }
 } 

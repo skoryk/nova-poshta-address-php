@@ -48,7 +48,9 @@ abstract class Data
     private function addIndexCity(City $city)
     {
         foreach(['', 'Ru'] as $lang){
-            $description = mb_strtolower(Helper::deleteScope($city->{'Description' . $lang}));
+//            $description = mb_strtolower(Helper::deleteScope($city->{'Description' . $lang}, 'UTF-8'));
+            $word = Helper::deleteScope($city->{'Description' . $lang});
+            $description = mb_strtolower($word, 'UTF-8');
             $descriptions = explode(' ', $description);
             foreach($descriptions as $description){
                 $this->addIndexCityName($description, $city);

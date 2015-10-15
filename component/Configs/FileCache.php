@@ -13,19 +13,11 @@ use NovaPoshta_Address\Base\AddressFile;
 
 class FileCache extends Config
 {
-    const DEFAULT_ADDRESS_FILE = 'address_nova_poshta';
-
     private $file;
 
-    public function __construct()
+    public function __construct(AddressFile $addressFile)
     {
-        $this->file = new AddressFile();
-        $this->setAddressFile(self::DEFAULT_ADDRESS_FILE);
-    }
-
-    public function setAddressFile($addressFile)
-    {
-        $this->file->address = $addressFile;
+        $this->file = $addressFile;
     }
 
     public function getData()

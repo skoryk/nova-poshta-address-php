@@ -20,6 +20,7 @@ use NovaPoshta_Address\Models\Warehouse;
 
 class DataInObject extends Data
 {
+    /** @var AreasObject  */
     protected $Areas;
     protected $IndexCityInArea;
     protected $IndexWarehouseInCity;
@@ -70,7 +71,7 @@ class DataInObject extends Data
 
     protected function addIndexCityName($nameCity, City $city)
     {
-        $this->IndexCityName->set($nameCity, $city->Ref);
+        $this->IndexCityName->set($nameCity, $city->Ref,1);
     }
 
     protected function getCityByRef($ref)
@@ -108,5 +109,28 @@ class DataInObject extends Data
         }
         $warehouse = $city->getWarehouse($warehouseRef);
         return $warehouse;
+    }
+
+    public function getCities()
+    {
+        $response = [];
+        /** @var AreaObject $area */
+        foreach($this->Areas->getAreas() as $area){
+            /** @var CityObject $city */
+            foreach($area->getCities() as $city){
+                $response[] = Helper::object2object($city, new City());
+            }
+        }
+        Helper::sortArrayOfObjects($response, 'DescriptionRu');
+        return $response;
+    }
+
+    public function getWarehouses($cityRef)
+    {
+        $city = $this->getCityByRef($cityRef);
+        if(!$city){
+            return null;
+        }
+        return $city->getWarehouses();
     }
 }
