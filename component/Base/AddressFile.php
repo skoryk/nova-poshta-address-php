@@ -12,4 +12,9 @@ namespace NovaPoshta_Address\Base;
 class AddressFile
 {
     public $address;
+
+    public function delete()
+    {
+        unlink($this->address);
+    }
 } 
